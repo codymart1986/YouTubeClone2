@@ -1,0 +1,23 @@
+{
+  "name": "youtubeclone2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codymart1986/YouTubeClone2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codymart1986/YouTubeClone2/issues"
+  },
+  "homepage": "https://github.com/codymart1986/YouTubeClone2#readme",
+  "dependencies": {
+    "config": "^3.3.6",
+    "mongoose": "^6.0.13"
+  }
+}
