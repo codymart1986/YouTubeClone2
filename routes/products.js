@@ -56,8 +56,7 @@ router.put("/:id", async (req, res) => {
       { new: true }
     );
     if (!product)
-      return res.status(400).send(`The product with id "${req.params.id}" d
-   oes not exist.`);
+      return res.status(400).send(`The product with id "${req.params.id}" does not exist.`);
     await product.save();
     return res.send(product);
   } catch (ex) {
@@ -69,8 +68,7 @@ router.delete("/:id", async (req, res) => {
   try {
     const product = await Product.findByIdAndRemove(req.params.id);
     if (!product)
-      return res.status(400).send(`The product with id "${req.params.id}" d
-   oes not exist.`);
+      return res.status(400).send(`The product with id "${req.params.id}" does not exist.`);
     return res.send(product);
   } catch (ex) {
     return res.status(500).send(`Internal Server Error: ${ex}`);
