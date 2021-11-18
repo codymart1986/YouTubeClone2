@@ -6,6 +6,15 @@ const replySchema = new mongoose.Schema({
     dislikes: { type: Number, default: 0 },
 });
 
+function validateReply(product) {
+    const schema = Joi.object({
+      text: Joi.string().min(1).max(50).required(),
+      likes: Joi.number(),
+      dislikes: Joi.number(),
+    });
+    return schema.validate(product);
+  }
+
 
 
 const Reply = mongoose.model("Reply", replySchema);
@@ -13,3 +22,5 @@ const Reply = mongoose.model("Reply", replySchema);
 
 
 module.exports.Reply = Reply;
+module.exports.replySchema = replySchema;
+module.exports.validateReply = validateReply;
