@@ -60,6 +60,7 @@ router.post("/", async (req, res) => {
     }
 });
 
+//edit a comment
 router.put("/:id", async (req, res) => {
     try {
       const { error } = validateComment(req.body);
@@ -77,6 +78,18 @@ router.put("/:id", async (req, res) => {
       if (!comment)
         return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
       await comment.save();
+      return res.send(comment);
+    } catch (ex) {
+      return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+  });
+
+  //delete a comment
+  router.delete("/:id", async (req, res) => {
+    try {
+      const comment = await Comment.findByIdAndRemove(req.params.id);
+      if (!comment)
+        return res.status(400).send(`The comment with id "${req.params.id}" does not exist.`);
       return res.send(comment);
     } catch (ex) {
       return res.status(500).send(`Internal Server Error: ${ex}`);
