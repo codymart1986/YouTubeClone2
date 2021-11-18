@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const reply = await reply.findById(req.params.id);
+    const reply = await Reply.findById(req.params.id);
     if (!reply)
       return res.status(400).send(`The reply with id "${req.params.id}" d
    oes not exist.`);
