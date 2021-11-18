@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "68ce26bf-5f44-48d3-9e89-0fb661d66c61",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get single comment",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"post reply to second comment edit\",\r\n    \"likes\": 65441656456,\r\n    \"dislikes\": 20000000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/comments/6195a860426e828459f40893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comments",
+						"6195a860426e828459f40893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all comments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/comments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit a reply",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"reply 1 edit\",\r\n    \"likes\": 1435340,\r\n    \"dislikes\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/comments/6195a860426e828459f40893/replies/6195b05fe8f2b2699bf49f99",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comments",
+						"6195a860426e828459f40893",
+						"replies",
+						"6195b05fe8f2b2699bf49f99"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "edit a comment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"videoID\": \"videoID2\",\r\n    \"text\": \"edit comment\",\r\n    \"likes\": 1,\r\n    \"dislikes\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/comments/6195a860426e828459f40893",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comments",
+						"6195a860426e828459f40893"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post a comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"videoID\": \"post\",\r\n    \"text\": \"deleting this comment\",\r\n    \"likes\": 1,\r\n    \"dislikes\": 20\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/comments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a comment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/comments/6195b2df5449e9f5ff228694",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"comments",
+						"6195b2df5449e9f5ff228694"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post a reply",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"reply 4\",\r\n    \"likes\": 1,\r\n    \"dislikes\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/replies/61959b8edffe20109bcf1e24/replies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"replies",
+						"61959b8edffe20109bcf1e24",
+						"replies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a reply",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/replies/61959b8edffe20109bcf1e24/replies/6195a5a13231fcf7ca4471c7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"replies",
+						"61959b8edffe20109bcf1e24",
+						"replies",
+						"6195a5a13231fcf7ca4471c7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
