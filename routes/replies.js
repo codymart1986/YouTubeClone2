@@ -23,7 +23,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/replies/", async (req, res) => {
   try {
     const { error } = validateReply(req.body);
     if (error) return res.status(400).send(error);

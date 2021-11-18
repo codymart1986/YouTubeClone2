@@ -1,9 +1,21 @@
 const { Comment, validateComment } = require("../models/comment");
-const { Reply } = require("../models/reply");
+const { Reply, validateReply } = require("../models/reply");
 const express = require("express");
 const router = express.Router();
 
 
+//gets all comments
+router.get("/", async (req, res) => {
+    try {
+      const comment = await Comment.find();
+      return res.send(comment);
+    } catch (ex) {
+      return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+  });
+
+
+//post a single comment
 router.post("/", async (req, res) => {
     try {
       const { error } = validateComment(req.body);
@@ -25,28 +37,49 @@ router.post("/", async (req, res) => {
     }
   });
 
-// router.post("/:commentId/replies/:userId", async (req, res) => {
-//   try {
-//     const comment = await Comment.findById(req.params.commentId);
-//     if (!comment)
-//       return res
-//         .status(400)
-//         .send(`The comment with id "${req.params.commentId}" does not exist.`);
 
-//     const reply = await Reply.findById(req.params.replyId);
-//     if (!reply)
-//       return res
-//         .status(400)
-//         .send(`The reply with id "${req.params.replyId}" does not exist.`);
+  //post a single reply
+  router.post("/:commentId/replies/", async (req, res) => {
+    try {
+      const { error } = validateReply(req.body);
+      if (error) return res.status(400).send(error);
+  
+      const reply = new Reply({
+        text: req.body.text,
+        likes: req.body.likes,
+        dislikes: req.body.dislikes,
+      });
+  
+      await reply.save();
+  
+      return res.send(reply);
+    } catch (ex) {
+      return res.status(500).send(`Internal Server Error: ${ex}`);
+    }
+  });
 
-//     comment.replies.push(reply);
+router.post("/:commentId/replies/:replyId", async (req, res) => {
+  try {
+    const comment = await Comment.findById(req.params.commentId);
+    if (!comment)
+      return res
+        .status(400)
+        .send(`The comment with id "${req.params.commentId}" does not exist.`);
 
-//     await comment.save();
-//     return res.send(comment.replies);
-//   } catch (ex) {
-//     return res.status(500).send(`Internal Server Error: ${ex}`);
-//   }
-// });
+    const reply = await Reply.findById(req.params.replyId);
+    if (!reply)
+      return res
+        .status(400)
+        .send(`The reply with id "${req.params.replyId}" does not exist.`);
+
+    comment.replies.push(reply);
+
+    await comment.save();
+    return res.send(comment.replies);
+  } catch (ex) {
+    return res.status(500).send(`Internal Server Error: ${ex}`);
+  }
+});
 
 // router.put("/:commentId/replies/:replyId", async (req, res) => {
 //   try {
