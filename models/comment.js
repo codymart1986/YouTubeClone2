@@ -10,7 +10,7 @@ const commentSchema = new mongoose.Schema({
     replies: [{ type: replySchema }],
 });
 
-function validateComment(product) {
+function validateComment(comment) {
     const schema = Joi.object({
       videoID: Joi.string().min(1).max(255).required(),
       text: Joi.string().min(1).max(255).required(),
@@ -18,7 +18,7 @@ function validateComment(product) {
       dislikes: Joi.number(),
       replies: Joi.array(),
     });
-    return schema.validate(product);
+    return schema.validate(comment);
   }
 
 const Comment = mongoose.model("Comment", commentSchema);

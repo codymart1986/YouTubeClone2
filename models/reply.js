@@ -7,13 +7,13 @@ const replySchema = new mongoose.Schema({
     dislikes: { type: Number, default: 0 },
 });
 
-function validateReply(product) {
+function validateReply(reply) {
     const schema = Joi.object({
-      text: Joi.string().min(1).max(50).required(),
+      text: Joi.string().min(1).max(255).required(),
       likes: Joi.number(),
       dislikes: Joi.number(),
     });
-    return schema.validate(product);
+    return schema.validate(reply);
   }
 
 
